@@ -1,7 +1,8 @@
 package assignment1;
 
+import java.io.Serializable;
 
-public class Accounts
+public class Accounts implements Serializable
 {
     protected String name; // The person who owns the account
     protected double balance;// do not define this in CheckingAccount class

@@ -7,57 +7,95 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class Panel extends JPanel{
+public class Panel extends JFrameL{
 	public static CheckingAccount a2=new CheckingAccount();
 	// also having a problem setting up the interface and the buttons
-	private JLabel prompt;
-	private JRadioButton one, two, three,four,five;
-	public Panel (){
-		prompt=new JLabel("Choose your input");
-		prompt.setFont(new Font("Arial",Font.BOLD,35));
+	public static final int WIDTH=400;
+	public static final int HEIGHT=200;
+	private JMenu fileMenu,accountMenu,transactionMenu;
+	private JMenuItem readFromFile,writeToFile,listAllCk,listAllDp,findAnAcct,listAll,addNew,addTrans;
+	private JMenuBar bar;
+	public Panel (String title){
+		super(title);
+		setSize(WIDTH,HEIGHT);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fileMenu=new JMenu("File");
 		
-		one=new JRadioButton("enter transaction");
-		one.setBackground(Color.red);
-		two=new JRadioButton("list all transactions");
-		two.setBackground(Color.red);
-		three=new JRadioButton("list all checks");
-		three.setBackground(Color.red);
-		four=new JRadioButton("list all deposits");
-		four.setBackground(Color.red);
-		five=new JRadioButton("list all service charges");
-		five.setBackground(Color.red);
+		BankActionListener ml=new BankActionListener();
 		
-		ButtonGroup g=new ButtonGroup();
-		g.add(one); g.add(two); 
-		g.add(three); g.add(four);g.add(five);
-		add(prompt);
-		add(one);add(two);add(three);add(four);add(five);
-		//for some reason the listener is giving me an error so i cant figure
-		//out how to get it running
-		BankActionListener listener = new BankActionListener();
-		one.addActionListener(listener);
-		two.addActionListener(listener);
-		three.addActionListener(listener);
-		four.addActionListener(listener);
-		five.addActionListener(listener);
-	setBackground(Color.white);
-	setPreferredSize(new Dimension(400,200));
+		readFromFile=new JMenuItem("Read from File");
+		readFromFile.addActionListener(ml);
+		fileMenu.add(readFromFile);
+		
+		writeToFile=new JMenuItem("Write to File");
+		writeToFile.addActionListener(ml);
+		fileMenu.add(writeToFile);
+		
+		accountMenu=new JMenu("Accounts");
+		
+		addNew=new JMenuItem("Add new Account");
+		addNew.addActionListener(ml);
+		accountMenu.add(addNew);
+		
+		listAll=new JMenuItem("List all Transactions");
+		listAll.addActionListener(ml);
+		accountMenu.add(listAll);
+		
+		listAllCk=new JMenuItem("List all Checks");
+		listAllCk.addActionListener(ml);
+		accountMenu.add(listAllCk);
+		
+		listAllDp=new JMenuItem("List all Deposits");
+		listAllDp.addActionListener(ml);
+		accountMenu.add(listAllDp);
+		
+		findAnAcct=new JMenuItem("Find and Account");
+		findAnAcct.addActionListener(ml);
+		accountMenu.add(findAnAcct);
+		
+		transactionMenu=new JMenu("Transactions");
+		
+		addTrans=new JMenuItem("Add Transaction");
+		addTrans.addActionListener(ml);
+		transactionMenu.add(addTrans);
+		
+		bar=new JMenuBar();
+		bar.add(fileMenu);
+		bar.add(accountMenu);
+		bar.add(transactionMenu);
+		setJMenuBar(bar);
+		
 	}
 private class BankActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent event)
 		{
-			Object source=event.getSource();
-			if(source==one)
-				Main.getCode();
+			String source=event.getActionCommand();
+			
+			if(source.equals("Read from File"))
+			Main.readFile();
+			
+				if(source.equals("Write to File"))
+				Main.writeFile();
 				
-			if (source==two)	
-				Main.getTransactions();
-			if(source==three)
-				Main.getChecks();
-			if(source==four)
-				Main.getDeposits();
-			if(source==five)
-				Main.getServiceCharge();
+					if(source.equals("Add new Account"))
+					Main.getCode();
+					
+						if(source.equals("List all Transactions"))
+						Main.getTransactions();
+					
+							if(source.equals("List all Checks"))
+							Main.getChecks();
+						
+								if(source.equals("List all Deposits"))
+								Main.getDeposits();
+								
+									if(source.equals("Find and Account"))
+									Main.findAccount();
+									
+										if(source.equals("Add Transaction"))
+										Main.start();
+				
+			
 		}
 	}
 }

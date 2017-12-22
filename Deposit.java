@@ -4,10 +4,11 @@ public class Deposit extends Transaction
 {
 	private double cash,check;
 	private double total;
-	public Deposit(int number, int id, double amount,double cash,double check) {
+	public Deposit(int number, int id, double amount,double ca,double ck) {
 		super(number, id, amount);
 		total=cash+check;
-	
+		cash=ca;
+		check=ck;
 		
 			
 		
@@ -23,5 +24,6 @@ public class Deposit extends Transaction
 	public double getCheck(){
 		return check;
 	}
+	
 }
 

@@ -2,12 +2,9 @@ package assignment1;
 public class Check extends Transaction
 {
     private int checkNumber; // check number for each check transaction
-    public Check(int tCount,int tId, double tAmt)
-    {
-    	super(tId,tCount,tAmt);
-    }
+ 
     public Check(int tCount,int tId, double tAmt,  int checkNumber) {
-        super(tId,tCount, tAmt);
+        super(tCount,tId, tAmt);
         this.checkNumber = checkNumber;
     }
    

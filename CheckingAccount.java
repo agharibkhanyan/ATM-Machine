@@ -5,6 +5,7 @@ public class CheckingAccount extends Accounts {
 	private double ServiceCharge;
 	private double f;
 	private String c;
+	public int fr=1;
 	public int transCount;
 	private ArrayList<Transaction>transList;
 	public CheckingAccount(){
@@ -25,14 +26,14 @@ public class CheckingAccount extends Accounts {
 		
 
 		if (c==1){
-		balance-=b;
+		balance=balance-b;
 		Check ch=new Check(gettransCount(),c,b,cn);
 		addTrans(ch);
 
 		}
 		else if(c==2){
 
-		balance+=b;
+		balance=balance+b;
 		Deposit de=new Deposit(gettransCount(),c,b,dca,dchk);
 		addTrans(de);
 		}
@@ -69,4 +70,12 @@ public class CheckingAccount extends Accounts {
 	}
 	public String getC(){
 	return c;
-}}
+	
+}
+	public void setSv(){
+		fr++;
+	}
+	public int getSv(){
+		return fr;
+	}
+	}

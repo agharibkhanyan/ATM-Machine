@@ -2,7 +2,8 @@ package assignment1;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class Transaction {
+import java.io.Serializable;
+public class Transaction implements Serializable {
 	private int transNumber;
 	private int transId;
     private double transAmt;
