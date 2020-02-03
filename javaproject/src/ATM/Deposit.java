@@ -1,4 +1,4 @@
-package assignment1;
+package ATM;
 
 public class Deposit extends Transaction
 {

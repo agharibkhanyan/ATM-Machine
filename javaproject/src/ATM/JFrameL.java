@@ -1,4 +1,4 @@
-package assignment1;
+package ATM;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

@@ -1,4 +1,4 @@
-package assignment1;
+package ATM;
 import java.util.*;
 public class CheckingAccount extends Accounts {
 

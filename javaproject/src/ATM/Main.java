@@ -1,9 +1,10 @@
-package assignment1;
+package ATM;
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
+
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -34,7 +35,8 @@ public class Main {
 	public static Transaction t;
 	public static Panel frame;
 	public static Deposit d =(Deposit)t;
-	public static void main(String[]args){
+	
+	public static void main(String[] args) {
 		//set frame message for the output panel
 	frame=new Panel("Checking Account Operations");
 	bank = new ArrayList<CheckingAccount>();

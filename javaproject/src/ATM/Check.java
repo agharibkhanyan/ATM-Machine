@@ -1,4 +1,4 @@
-package assignment1;
+package ATM;
 public class Check extends Transaction
 {
     private int checkNumber; // check number for each check transaction
